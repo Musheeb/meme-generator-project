@@ -1,0 +1,26 @@
+.container-header {
+  height: 65px;
+  /* background: linear-gradient(to right, #672280, #a626d3); */
+  background: linear-gradient(90deg, #672280 1.18%, #a626d3 100%);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: #ffffff;
+}
+.container-header-content {
+  padding-left: 50px;
+  display: flex;
+  justify-content: center;
+}
+.troll-face {
+  width: 32px;
+  height: 27px;
+  padding-right: 10px;
+}
+.header-text {
+  font-weight: bold;
+  font-size: 20.7px;
+}
+.header-text-react {
+  padding-left: 450px;
+}
