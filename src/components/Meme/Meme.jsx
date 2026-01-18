@@ -1,11 +1,24 @@
 import "./Meme.css";
 import memeData from "../../memeData";
+import { useState } from "react";
 
 function Meme() {
   //   const thingsArray = ["thing1", "thing2"];
   const memes = memeData.data.memes;
+  const [meme, setMeme] = useState({
+    topText: "",
+    bottomText: "",
+    memeImageUrl: memes[0].url,
+  });
   function getMemeImage() {
-    console.log(memes?.[Math.floor(Math.random() * memes.length)].url);
+    // console.log(memes?.[Math.floor(Math.random() * memes.length)].url);
+    const newMemeUrl = memes?.[Math.floor(Math.random() * memes.length)].url;
+    setMeme(function (prevMemeObject) {
+      return {
+        ...prevMemeObject,
+        memeImageUrl: newMemeUrl,
+      };
+    });
     // return memes?.[Math.floor(Math.random() * memes.length)].url;
   }
   //   const parsedArray = thingsArray.map((thing) => {
@@ -25,7 +38,7 @@ function Meme() {
         <button className="form-button" onClick={getMemeImage}>
           Get a new meme image 🖼️
         </button>
-        <img src={memes[0].url} alt="meme-image" className="image" />
+        <img src={meme.memeImageUrl} alt="meme-image" className="image" />
       </div>
       {/* <br />
       <button onClick={addThingInArray}>Add Item</button>

@@ -1,0 +1,10 @@
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-user-image {
+  height: 200px;
+  width: 200px;
+}
