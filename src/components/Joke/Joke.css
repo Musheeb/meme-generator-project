@@ -1,0 +1,10 @@
+.joke-container {
+  padding: 10px;
+}
+
+.joke-button {
+  background-color: tomato;
+  border-radius: 15px;
+  height: 50px;
+  width: 100px;
+}
