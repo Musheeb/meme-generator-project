@@ -10,6 +10,7 @@ import Boxes from "./components/Boxes/Boxes.jsx";
 import Box from "./components/Box/Box.jsx";
 import Joke from "./components/Joke/Joke.jsx";
 import Form from "./components/Form/Form.jsx";
+import FormNew from "./components/FormNew/FormNew.jsx";
 
 // import boxData from "./boxes.js";
 import jokes from "./jokes.js";
@@ -106,6 +107,7 @@ function App() {
   return (
     <div className="container-main">
       <Form />
+      <FormNew />
 
       {/* {messages.length ? (
         <h1>

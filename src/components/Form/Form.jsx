@@ -12,23 +12,30 @@ function Form() {
     areYouAvailable: true,
     areYouEvenAlive: false,
     employment: "",
+    favSports: "",
   });
 
   console.log(formData);
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
-    console.log(event.target.value);
+    // console.log(event.target.value);
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
-        [name]: type === "checked" ? checked : value,
+        [name]: type === "checkbox" ? checked : value,
       };
     });
   }
 
+  function submitFormData(event) {
+    event.preventDefault();
+    console.log("Form sumitted with data - ", formData);
+    //Call you API here to submit the form.
+  }
+
   return (
-    <form action="" className="form">
+    <form action="" className="form" onSubmit={submitFormData}>
       <input
         type="text"
         placeholder="First Name"
@@ -129,6 +136,15 @@ function Form() {
         />
         <label htmlFor="full-time-radio">Full-time</label>
       </fieldset>
+      <br />
+      <label htmlFor="favSports">Select your favorite sports</label>
+      <select name="favSports" id="favSports" onChange={handleChange}>
+        <option value="">-- Choose --</option>
+        <option value="cricket">Cricket</option>
+        <option value="football">Football</option>
+        <option value="vollyball">Vollyball</option>
+      </select>
+      <button>Submit</button>
     </form>
   );
 }
