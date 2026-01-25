@@ -11,12 +11,23 @@ import Box from "./components/Box/Box.jsx";
 import Joke from "./components/Joke/Joke.jsx";
 import Form from "./components/Form/Form.jsx";
 import FormNew from "./components/FormNew/FormNew.jsx";
+import Login from "./components/LoginForm/Login.jsx";
+import UseEffect from "./components/UseEffectPractice/UseEffect.jsx";
+import WindowTracker from "./components/WindowTracker/WindowTracker.jsx";
 
 // import boxData from "./boxes.js";
-import jokes from "./jokes.js";
+// import jokes from "./jokes.js";
 import { useState } from "react";
 
 function App() {
+  const [show, setShow] = useState(true);
+  console.log(show);
+  function handleChange() {
+    // console.log("hey")
+    setShow((prevShow) => {
+      return !prevShow;
+    });
+  }
   // const [messages, setMessages] = useState(["a", "b", "c"]);
   // const [joke, setJoke] = useState(jokes);
   // function flipPunchLine(id) {
@@ -106,8 +117,12 @@ function App() {
   // });
   return (
     <div className="container-main">
-      <Form />
-      <FormNew />
+      <button onClick={handleChange}>Toggle Window Tracker</button>
+      {show && <WindowTracker show={show} />}
+      {/* <UseEffect /> */}
+      {/* <Login /> */}
+      {/* <Form />
+      <FormNew /> */}
 
       {/* {messages.length ? (
         <h1>

@@ -1,53 +1,73 @@
 import "./Meme.css";
-import memeData from "../../memeData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Meme() {
-  //   const thingsArray = ["thing1", "thing2"];
-  const memes = memeData.data.memes;
   const [meme, setMeme] = useState({
     topText: "",
     bottomText: "",
-    memeImageUrl: memes[0].url,
+    memeImageUrl: "https://i.imgflip.com/30b1gx.jpg",
   });
-  function getMemeImage() {
-    // console.log(memes?.[Math.floor(Math.random() * memes.length)].url);
-    const newMemeUrl = memes?.[Math.floor(Math.random() * memes.length)].url;
+  console.log(meme);
+  const [allMemes, setAllMemes] = useState([]);
+
+  useEffect(() => {
+    console.log("Effect rendered");
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data?.data?.memes);
+        setAllMemes(data?.data?.memes);
+      });
+  }, []);
+
+  function handleChange(event) {
+    const { name, value } = event.target;
     setMeme(function (prevMemeObject) {
       return {
         ...prevMemeObject,
-        memeImageUrl: newMemeUrl,
+        [event.target.name]:
+          name === "memeImageUrl"
+            ? allMemes?.[Math.floor(Math.random() * allMemes.length)].url
+            : value,
       };
     });
-    // return memes?.[Math.floor(Math.random() * memes.length)].url;
   }
-  //   const parsedArray = thingsArray.map((thing) => {
-  //     return <p key={thing}>{thing}</p>;
-  //   });
-  //   console.log(parsedArray);
-  //   function addThingInArray() {
-  //     const currentArrayLength = thingsArray.length;
-  //     thingsArray.push(`things${currentArrayLength + 1}`);
-  //     console.log("Things array after updation - ", thingsArray);
-  //   }
   return (
     <main className="container-meme">
       <div className="form">
-        <input type="text" className="form-input" placeholder="Top Text" />
-        <input type="text" className="form-input" placeholder="Bottom Text" />
-        <button className="form-button" onClick={getMemeImage}>
+        <input
+          type="text"
+          className="form-input"
+          placeholder="Top Text"
+          name="topText"
+          onChange={handleChange}
+          value={meme.topText}
+        />
+        <input
+          type="text"
+          className="form-input"
+          placeholder="Bottom Text"
+          name="bottomText"
+          onChange={handleChange}
+          value={meme.bottomText}
+        />
+        <button
+          className="form-button"
+          onClick={handleChange}
+          name="memeImageUrl"
+        >
           Get a new meme image 🖼️
         </button>
-        <img src={meme.memeImageUrl} alt="meme-image" className="image" />
+        <div className="meme">
+          <img
+            src={meme.memeImageUrl}
+            alt="meme-image"
+            className="meme-image"
+          />
+          <h4 className="meme-text top">{meme.topText}</h4>
+          <h4 className="meme-text bottom">{meme.bottomText}</h4>
+        </div>
       </div>
-      {/* <br />
-      <button onClick={addThingInArray}>Add Item</button>
-      {parsedArray} */}
-      {/* <div className="container-meme-inputs">
-        <input type="text" placeholder="Top text" className="inputs" />
-        <input type="text" placeholder="Bottom text" className="inputs" />
-      </div>
-      <button className="button">Get a new meme image 🖼️</button> */}
     </main>
   );
 }

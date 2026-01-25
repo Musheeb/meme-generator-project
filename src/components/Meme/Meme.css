@@ -25,10 +25,34 @@
   cursor: pointer;
 }
 
-.image {
-  grid-column: 1 / -1;
+.meme {
+  position: relative;
   width: 477px;
   height: 268px;
+  overflow: hidden;
+}
+
+.meme-image {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 100%;
+}
+
+.meme-text {
+  position: absolute;
+  left: 15%;
+  color: white;
+  text-align: center;
+
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.top {
+  top: 0;
+}
+.bottom {
+  bottom: 0;
 }
 
 /* .container-meme {

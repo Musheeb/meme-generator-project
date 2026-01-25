@@ -1,0 +1,36 @@
+.login-form-container {
+  height: 500px;
+  width: 500px;
+  background-color: purple;
+  margin: 20px;
+  border-radius: 15px;
+}
+
+.form-container {
+  padding: 80px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.input-box {
+  height: 30px;
+  width: 300px;
+  background-color: lightblue;
+  border-radius: 10px;
+  text-indent: 5px;
+}
+
+.checkbox-container {
+  color: lightblue;
+}
+
+.button-submit {
+  height: 50px;
+  width: 100px;
+  background: linear-gradient(to right, lightblue, green);
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
